@@ -1,0 +1,824 @@
+Jenkins plugin:
+   Job DSL plugin
+   GitHub Branch Source Plugin
+   ssh-agent plugin
+
+
+S3- bucket 
+access key:AKIAWAGBIFECA3U7QAO7
+secret: 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
+
+setup environment variables :
+export AWS_ACCESS_KEY_ID=AKIAWAGBIFECA3U7QAO7
+AKIAWAGBIFECA3U7QAO7
+export AWS_SECRET_ACCESS_KEY=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
+
+#export AWS_DEFAULT_REGION=ap-south-1
+
+# upload file to S3
+aws s3 cp db.sql s3://jenkins-temporary/db.sql
+
+#bucket 2
+jenkin-buckets
+aws s3 cp db.sql s3://jenkin-buckets/db.sql
+
+# create data from remote-user
+mysql -u root -h db_host -p
+pass=1234
+
+1) create database testdb;
+2) use testdb;
+3) create table info (name varchar(30), lastname varchar(40));
+4) insert into info values ('yavdhesh', 'sanchihar');
+
+# create dump
+mysqldump -u root -h db_host -p testdb > /tmp/db.sql
+-u user =h host -p=password , testdb=name of database on host
+
+
+jis server par docker aur container chal rhe hai
+
+1) wahaa par localtime file hataa docker
+2) baahar server pe yum -y install ntp
+3) ntpdate -u in.pool.ntp.org
+
+
+#### jenkins mailer in AWS
+SMTP Username: AKIAWAGBIFECHI3EMC4C
+SMTP Password: BGd5kMOKgNCzCsxC3g+B0btd1uU0xtJ6vn/qOf9pJSdl
+
+
+
+
+gitlab docker-compose file
+git:
+  container_name: gitlab
+  image: 'gitlab/gitlab-ce:latest'
+  hostname: 'gitlab.example.com'
+  ports:
+    - '8090:80'
+  volumes:
+    - '$GITLAB_HOME/config:/etc/gitlab'
+    - '$GITLAB_HOME/logs:/var/log/gitlab'
+    - '$GITLAB_HOME/data:/var/opt/gitlab'
+
+
+ git:
+       container_name: gitlab
+       image: 'gitlab/gitlab-ce:latest'
+       hostname: 'gitlab.example.com'
+       ports:
+         - '8090:80'
+       volumes:
+         - '$GITLAB_HOME/config:/etc/gitlab'
+         - '$GITLAB_HOME/logs:/var/log/gitlab'
+         - '$GITLAB_HOME/data:/var/opt/gitlab'
+       networks:
+         - net
+	
+	
+git lab password: root => 12341234	
+
+
+git clone http://root:12341234@gitlab.example.com:8090/jenkins-pipeline-yavdhesh/simple-maven-project.git
+
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCs8YDGUoj2TgNAQU1CfnBFn9Rd+NsB2jdkOrbKEXv1D165XYCizAM+MoWzWDI7K2wnc65ZCEvG/YlzXAQNzdCv+OvYaCMfVfN33zdVrS6OreDfXlyGDqokNlbwLC69ovWCc8hq1c9LjF8MLHJRMwVM4itFXxkA0IQe6ERXkt+T4sbDnHMcTMyotVfKhTnwaEaAC/k2142m3u4LGInINYSjyTN8QRXg2Ushl38piCHdktY6uH7oRSisr4LQhRFqq6HP8s1KdEN6zD6U0TMDs5MVIEI9GjxpZDQrzvyfvbsPUy43xuiJq3VEZkQ1KzsC1KJKTJWbClUt08vfjeSy65Uzs9jQIrp2CDJdZltWRYU9wG8xnse55JELMFZ/kXQz0yr9M8lXVzbEWCkrh8wz0G/jpc1ekZpKScnTHagpEM+umj8HW9RqpkOoKy61dEpWZAvnl83OB4M6lxKcTAR0dNz2xAHEkYvJt1yiCyPbtoRZK9iHKTqG8mHvIHPjBzSE2AvXojtCWbd5IW5CVmlzrxFnrdZFJQgb4uAhzeXXs1Me0n+nOhYWk9NGPZWl+QKCOXuMGOOHXmDYytO54K8i9UH0/Qw1SS4JGZYoqXig/ReXqyt86eFbi7bEnyVzxNQ9O8uIiag4qBA7LhUCPQzd8Tdxzg5qCxzUtyBe2fIjchbBjQ== git@gitlab.example.com:8090
+
+
+
+/etc/gitlab
+ root@gitlab.example.com
+ 
+ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDGAxcrcVQXVUvgq62IuWg657sEDDZR6MExa64HsRW3aai+3xdURJjAbIUOq28dYuFZKkuDmtJUQgJH6cqACE8mRykCEYgWLGqFAcNCBREMfKZSgKtD3PfEdtoJHNLRrjBQ3d5F7k/2fpiw8hsCrNtZ0bBsJWRi5VxNPH2pf2M878zmQmG2RhNZ/rFkb+ApvHKpwjglyUvgYndUMR2SJHpfNLfDcHy23lEc6VVzic2+oWfcILrRp3kgkOSvu+MjGCm9whvx+Uclaege1eAyHQ7BMhAZbuqc8/97qCeaaiD/y9QbEF+72bbPFjxcldk6WTtF4mdP8SBbDPKjlD7W/xG28kZNGWZ5pwd67Y6cawDJ0V0OgxhGT9rD3O/P91PouoixrhcT96Jh3F4JYi3AnAyZHe0qmBXh9aU5PGJKyQYlKDvWPSJUyqOHz9k4kTk+yIHNFIuK1GfiaQstMZLfjtq7+c4gZJbO04Oe154e124OfRwle07pPpnNL5nEpUH2rcEOc3trCaJI6SpTMl3bQBkNr+cRChBK3hWsI51zfkBMKlHIhYW56eLbk1uOUfM1B9AzHYO2N2KZMF44X5pQqE/0Dh5d4JGGAHPN2b6gc1mvL0mlV3WMWIWbzVwCCxkQuF0cwb6aHE4Pg4CMTdW9pUKYmi2jltgB+iZC4fInMFcZFQ== git@gitlab.example.com:8090
+
+ is director me custom_hooks banaa sakte hai
+ /var/opt/gitlab/git-data/repositories/jenkins/maven.git
+ /var/opt/gitlab/git-data/repositories/jenkins-pipeline-yavdhesh/simple-maven-project.git
+ /var/opt/gitlab/git-data/repositories/jenkins-pipeline-yavdhesh/simple-maven-project.git/custom_hooks/post-receive.sh
+ 
+ Hello Hello Radhey Radhey
+ Hello Hello Radhey Radhey Shri Ram Shri Hari
+ Hello Hello Radhey Radhey Shri Ram
+ 
+ gitlab api access token: 1MhAU4iCnqapzAFzdGDm
+ 
+ maven pipeline secret token : bd22bf3ea5e015ee2ec7e649657e5717
+ 
+ -Dhudson.security.csrf.GlobalCrumbIssuerConfiguration.DISABLE_CSRF_PROTECTION=true
+ 
+ RUN useradd remote_user && \
+    echo "1234" | passwd remote_user --stdin && \
+    mkdir /home/remote_user/.ssh && \
+    chmod 700 /home/remote_user/.ssh
+	
+	--env JAVA_OPTS="-Dhudson.Main.development=true \
+    -Dhudson.footerURL=http://customurl.com \
+    -Xms800M -Xmx800M -Xmn400M \
+
+	
+	Integration waalaa tabhi chalega jab public IP ho
+	
+	http://gitlab.example.com:8090/admin/application_settings/general#js-visibility-settings
+	custoem git url for HTTP
+	
+	D:\STSWorkplace\Angular_Ascent\AscentEmployeeSearch
+	
+	
+	{event:string,data:string|Peri}
+	
+	-w working director when docker command is executed--> aur working director me mvn clean install/ maven package/mvn test chalaa sakte hai
+	docker run --rm -v $PWD/java-app:/app -v /root/.m2:/root/.m2 -w /app maven:3-alpine sh
+	
+	jenkins me ander docker install karne par
+	/var/run/docker.sock <----- it is most impo for docker
+
+    jenkins user needs to have chown permission.
+
+    chown jenkins:jenkins -R /var/run/docker.sock
+	jenkins user ko docker group me bhi daalnaa hogaa
+	
+Jenkins pipeline:
+docker container run --rm -v $PWD/java-app:/app -v /root/.m2:/root/.m2 -w /app maven:3-alpine mvn -B -DskipTests clean package
+
+Make the command resusable:
+$@== saare parameter yahaa aa jaayenge
+docker container run --rm -v $PWD/java-app:/app -v /root/.m2:/root/.m2 -w /app maven:3-alpine "$@"
+
+FOr java (running the jar):
+openjdk:8-jre-alpine image
+
+Build the image and tag the version
+docker build -f Dockerfile -t test
+
+image:'appname:$BUILD_ID'
+build Id= TAG ke jaise upyog kar rhe hai
+
+change the name of the tag from app:2 (old:tag) to newname:tag
+docker tag app:2 yavdhesh/falana-app:<tag>
+
+
+After we build image upload it to repository
+we need to pass information file to the other server where we need to deploy the image or anything.
+
+echo maven-project > /tmp/.auth
+
+echo $BUILD_TAG >> /tmp/.auth
+
+echo $PASS >> /tmp/.auth
+
+So .auth file will be transferred, then we use the information in it to install the image --> run the current version container
+
+to transfer file we can use ansible or simple scp command
+scp -i private-key /tmp/.auth  prod-user@virtualmachine-prod:/tmp/.auth
+
+dusre server par .auth se variable pdhne ke liye
+
+sed -n '1p' /tmp/.auth 
+1p== pratham line, 2p seconds line 3p third line
+
+login docker hub
+docker login -u <username docker hub> -p <docker hubpassword>
+
+ssh -i /opt/prod prod-user@<ip or DNS> "/tmp/publish"
+"/tmp/publish" command to be executed on remote machine
+
+************ /var/run/docker.sock
+jenkins user container ke ander waale ko aur bahar waale sabhi ko chwon jenkins:jenkins -R /var/run/docker.sock dena padtaa hai
+
+Steps:
+1) Build
+2) test
+3) push to repo
+4) transfer file ( /tmp/.auth) containing auth data and deploy script  from jenkinds server to remote-server
+file contains: version , project name and password/authentication
+5) run the deploy script on remote-server
+6) delete the .auth file and new version should be deployed.
+
+Custom_hook banaane ke liye gitlab server pe jana padega
+/var/opt/gitlab/git-data/repositories/jenkins/pipeline-maven.git/custom_hooks/hookwaali.script
+https://docs.gitlab.com/ee/administration/server_hooks.html
+/jenkins-pipeline-yavdhesh/simple-maven-project.git
+curl -u "yavdhesh:1234" -s 'http://jenkins:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
+/var/opt/gitlab/git-data/repositories/@hashed/d4/73/d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35.git
+
+yahaa bhi
+/var/opt/gitlab/git-data/repositories/@hashed/d4/73/d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35.git/hooks/custom_hooks
+
+custom_hooks scirpt
+
+hooks are there in every project .git/hooks
+
+Give your hook:
+chmod ug+x .git/hooks/*
+
+#!/bin/bash
+
+if ! [ -t 0 ]; then
+        read -a ref
+fi
+
+
+IFS='/' read -ra REF <<< "${ref[2]}"
+branch="${REF[2]}"
+
+if [ $branch == "master" ]; then
+        crumb=$(curl -u "yavdhesh:1234" -s 'http://jenkins:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+        curl -u "yavdhesh:1234" -H "$crumb" -X POST http://jenkins:8080/job/Maven-Demo/build?delay=0sec
+
+        if [ $? -eq 0 ]; then
+                echo "*** Ok"
+        else
+                echo "*** Error"
+        fi
+
+fi
+
+
+
+to check groupid of docker
+getent group docker
+
+yaa cat /etc/group | grep docker
+
+
+/home/jenkins-data/simple-maven-project/.git/hooks
+
+########### How to commit custom hook #################
+https://stackoverflow.com/questions/16738441/how-to-request-for-the-crumb-issuer-for-jenkins
+# create directory
+mkdir git_hooks
+
+# add a hook that runs hello world
+echo "#\!/bin/sh \n echo 'hello world'" > git_hooks/pre-commit
+
+# make the hook runnable
+chmod +x git_hooks/pre-commit
+
+# configure git to use the new hook - it will stay with the repository
+git config core.hooksPath "./git_hooks"
+
+# the script will run on every commit:
+git commit -am "added pre-commit hook"
+> hello world
+
+1) Ways to trigger jenkins job/Maven-Demo/build
+1) Hit http://jenkinslaboratory.in:8080/crumbIssuer/api/json
+with Basic Auith yavdhesh 1234
+we will get response :
+{
+    "_class": "org.jenkinsci.plugins.strictcrumbissuer.StrictCrumbIssuer",
+    "crumb": "f013786b8f30569186271b5c316f40ded66ecf7108a487a5d0feced364151b3fa93233ddfa02fc9bdebbdf6f9917ce4f67daa5bb50b17f66c5f66674b8b53837",
+    "crumbRequestField": "Jenkins-Crumb"
+}
+
+2) Then we make a post request to the url : 
+http://jenkinslaboratory.in:8080/job/Maven-Demo/build
+with Header : Jenkins-Crumb: <crumb.value>
+
+
+
+/home/git/repositories/<group>/<project>.git/custom_hooks/ (if installed by sources) 
+or in 
+/var/opt/gitlab/git-data/repositories/<group>/<project>.git/custom_hooks/ if installed by Omnibus
+
+
+
+chmod -R [ugao][+-=] [rwx] /directory
+RWX=421
+u=RWX,g=r-x,o=r--
+777=ugo
+4+2+1=7
+
+id -a <user>
+
+$?=0 antim process sahi chali
+
+docker:
+--net=host no virtual networks
+--net-alias DNS search aur load balancing ke liye
+hamesha log jo bhi hai /dev/stdout aur /dev/stderr me daalo<--- isme daalne ke baad baaki sab docker dekh legaa
+
+Docker Swarm:
+docker service create alpine ping 8.8.8.8
+docker service update <service_id> --replicas 4
+---> replicas==> number of tasks
+
+docker swarm join --token SWMTKN-23k8m321wmbid18wjem19ki035a8pavx8ogcqjn7jxh4e3eev3-994onfvf4gmleih4zdsw42wce 192.168.0.6:2377
+
+docker swarm join --token SWMTKN-1-27i606wjuj2rsdwbr1rmmwtkvzmytviu6w6mh2b24pba5zmw24-5785831a1fr2to2bwh2j6ypag 192.168.0.6:2377
+docker service create alpine ping 8.8.8.8
+docker service update <serviuce naam> --replicas 3
+docker node ls (jitne bhi swarm ke node has dekhe ke liye)
+docker service ps <service name>
+docker node ps <nodename>
+docker node update --role
+
+docker service create --name psql --network mydrupal --env POSTGRES_PASSWORD=mypass postgres
+docker service create --name drupal --network mydrupal -p 80:80 drupal
+docker service create --name drupal --network mydrupal -p 80:80 drupal
+
+//docker playground url
+http://ip<hyphen-ip>-<session_jd>-<port>.direct.labs.play-with-docker.com
+
+docker service create --name search --replicas 3 -p 9200:9200 elasticsearch:2
+
+Routing mesh=> har service ke liye ek virtual IP banaa detaa hai, aur phir traffic ko task ki aur loadbalance kar detaa hai
+
+#docker secredts servuce
+
+docker secret create <secret-name> [<file naame> | - ]
+echo "mai bhi" | docker secret create username -
+
+####docker-compose alag alag env me
+aisi command by default rehit hai -->docker-compose -f docker-compose.yml -f docker-compose.override.yml agar docker-compose up -d karo to
+
+
+agar test env me koi aur compose chalaani hai to
+
+Test env ke liye
+
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d''
+
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml config
+
+############################
+ docker-compose -f docker-compose.yml -f docker-compose.prod.yml config > output.yml
+ docker service scale <servicename>=replicanumber
+
+docker service rollbak <servicename>
+
+update imge version of  servuce
+docker service update --image nginx:1.6.9 <servicename>
+
+docker service update --env-add NODE_ENV=production --publish-rm 8080
+
+#######scaling out and in
+docker service scale web=6 api=3
+
+##############add and remove port#
+docker service update --publish-rm 80 --publish-add 8080:80
+
+######### rebalance tasks between nodes
+
+#########healthcheck dockerfile (exit 1 ==false so exit 1 can be replcaed with false)
+HEALTHCHECK --interval=30s --timeout=3s \
+     CMD curl -f http://localhost/ || exit 1
+	 
+###########docker registry
+docker container run -d -p 5000:5000 --name registry registry
+# retag image and push to local registry
+docker tag hello-world 127.0.0.1:5000/hello-world
+docker push 127.0.0.1:5000/hello-world
+
+####remove	 image from local cache and pull from our local registry
+docker image remove hello-world
+docker image remove 127.0.0.1/hello-world
+docker pull 127.0.0.1:5000/hello-world
+
+#### recreate our new local repo using mount points
+docker container run -d -p 5000:5000 --name registry -value
+$(pwd)/registry-data:/var/lib/registry registry
+
+###### ssl configuration:
+https://training.play-with-docker.com/linux-registry-part2/
+
+
+docker registry url
+http://ip172-18-0-58-c37k507qf8u0009k8dk0-5000.direct.labs.play-with-docker.com/v2/_catalog
+v2/_catalog shows all images inside it
+it shows response as {"repositories":["hello-world","not-hello-world"]}
+
+#Notes Bret Fisher talk: Docker in Production
+1) docker is kernel and storage dependent
+2) Single dockerfile over multiple and  Override CMD (docker-compose) then for test env --> docker-compose andp
+for prod docker stack --compose-file exmaple.stack.yml deploy <myappstackname>
+3) kernel 4.0 use (ubuntu 16.04 LTS has it)
+4) Use official images with version. Always put a version ahead of image (never use latest)
+5) Image size is not important (Remember!!) 
+6) Never even no of nodes (5 node)
+
+
+Swarm architectures
+1) Baby Swarm 1-Node (simple docker swarm init)
+2) 3-Node: All managers, One node can fail (use when small budget)
+3) 5-Node: All manager, high available
+4) Flexy Swarm (10+nodes): 5 managers, 5 workers
+5) 100+: 5 managers, others workers
+
+
+
+Swarm GUI : Portainer
+Central Monitoring: Prometheus + Grafana
+Central Logging: ELK
+Layer 7 Proxy: Flow-Proxy Traefik
+Registry: Docker distribution + Portus
+CI/CD: Jenkins
+Storage: REX-Ray
+Networking: Swarm
+Orchestration: Swarm
+Runtime: ZDocker
+HW/OS : Infrakit/Terraform
+
+
+Orchestrator: A service which manages containers across different nodes
+
+kubernetes: google origin now managed by open sources
+
+No Servers* change rate= benefit of orchestration
+
+orchestration tools:
+1) kubernetes 
+2) Swarm
+3) Cloud foundry
+4) ECS (AWS)
+
+Difference betwnee Swarm and Kubernetes :
+Swarm: comes with Docker, single vendor, easy to deploy and managed
+80/20 rule, 20% features for 80% use, runs anywhere dockers runs
+,secure by default eg: secret service, easier to troubleshoot
+
+Kubernetes: Clouds support deploy and manager K8, widest adoption
+and community, flexible and suport more use cases
+K8 vendor support, Many people think K8 more obvious to use than others
+
+
+#######################All About Kubernetes ####
+Basic term: k8s or kubernetes
+cli: kubectl
+Nodes: single server in cluster
+kubelet: kubernetes agent running on nodes
+Control Plane (managers/masters/master): Set of containers that manage the cluster
+
+Every master has (all containers) : etcd ( distributed key/value storage db uses same Raft protocol), api, schedular (how and where (which node) containers will placed), controller manager
+Core DNS
+
+Every node : Kubelet and kubeproxy
+
+#Installation K8s:
+Use snap for linux
+
+
+
+
+
+##security
+app-armour,setcom
+2) Docker bench for security: checks if docker is properly 
+installed 
+3) Containers should run with non root user ie create a user
+RUN groupadd --gid 1000 node \
+    && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+
+To make sure files owner and user(who run the files) are same we can 
+use --chown node:node for the files	
+COPY --chown=node:node package.json package-lock*.json ./	
+
+when you create a directory, chown -R node:node /app
+so that user running and owning are same.
+
+##root user in the container does not have much access to the host as root user of container is limited to container.
+but if you want to make sure containers are not spun as root user.
+we can configure in docker daemon config using user namespaces (per host setting)
+namespaces: virtual cluster inside cluster
+
+But if we have a different user in a container and different user on host(on which docker daemon running)
+then we might end up with files (volume is mapped to some directory on host) that are written as different user(container user) on host.
+So we need to take care ie host user has appropriate permissions.
+
+4) Scan your repo: Snyk (Shift Left)
+
+Tools to scan : Snyk image scanner and  aqua Microscanner
+Open SourceTrivy scanners
+micro scanner may needs ca-certiricates to be installed in image
+
+5) sysdig : RUntime bad behaviour monitoring
+
+6) Content Trust: SIgning images
+
+7) AppArmour, SELinux and Seccomp and Linux capabilities
+
+8) Docker rootless: Allows you to run docker rootless:
+Drawback: need to be root if we need to create overlay custom networks
+
+Secrets have to be unencrypted somewhere not on disk but at least in memory
+for application to be able to use it. what we can do is allow
+proper user with proper permission to only the user running app in the container
+
+--chown 
+
+
+#### Docker newer features
+docker Buildex
+ls ./docker/cli-plugins
+
+## to build image fot mult archs
+docker buildx create --driver docker-container --name dckbuilder
+docker buildx imagetools
+
+#########Connect to another docker daemon:
+DOCKER_HOST="tcp://xxx.xxx.xxx.xxx:2375|76" docker ps
+DOCKER_HOST="tcp://xxx.xxx.xxx.xxx:2376" docker container run -p 80:80 --name web nginx
+above command will run container on a different host
+
+DOCKER_HOST="tcp://ip172-18-0-76-c3832vnqf8u000fapad0@direct.labs.play-with-docker.com" docker ps
+docker context create ssh --docker "host=ssh://aws-labs-jump"
+
+DOCKER_HOST="ssh://ip:2376" docker ps
+SO docker context allows us to connect to another daemon and check all the container srunning
+
+DOCKER_HOST="ssh://user@1.1.1.1" docker ps
+
+########Deamon confgi
+/etc/.docker/config.json
+
+###### on same server
+export DOKCER_HOST=unix:///run/user/1000/docker.sock
+
+########admin-settings.json#######
+can be used to set different config values ie memory
+
+$$$$$$ gosu vs USER$$$$$$$$
+
+###### docker network vs compnay network#######
+docker subnet cab cobnflict with compnay networks. SO we can change the default subnet for docker
+
+###### DB on container ##############
+Not good idea (my opinion)
+
+$$$$$ Single node swarm in prod not docker-compose (compose id for test)
+
+
+####entry point script ke ant me##
+exec "$@"
+daalo isse context CMD ko mil jaataa 
+############ minikube and microk8 for developers and kubeadm is prod greade
+
+NOTE : if using minikube--> install kubectl first then minikube
+Install microk8 using snap
+
+sudo snap install microk8s --classic --channel=1.17/stable--channel=1.17/stable
+
+Steps:
+sudo yum install epel-release
+sudo yum install snapd
+sudo systemctl enable --now snapd.socket
+sudo ln -s /var/lib/snapd/snap /snap  (yaa /usr/libexec/snapd/snapd)
+sudo snap install microk8s --classic --channel=1.17/stable
+
+##########Kuberbetes########
+Pod: one or more containers running together on one node.
+sudo usermod -a -G microk8s jenkins
+
+Controller: creating /updating pods and other objects (different type of controllers: Deployment, Replicaset, statefulSet, DaemonSet, Job, CronJob)
+
+Service: Not docker service, network endpoint to connect to a pod (like DNS)
+
+NamespaceL filerted group objects (Not like docker names space, not related to security)
+
+
+############### first pod with kubectl ############
+Deployment >> ReplicaSet >> Pod (app container + NIC =network+volume)
+
+kubectl create deployment nginx --image nginx
+kubectl run nginx --image nginx
+
+##### to get all deployment > replicaset and ods
+microk8s.kubectl get all
+#### for pods only
+microk8s.kubectl get pods
+
+###### to scale 
+kubectl scale deploy/my-apache --replicas 2
+or kubectl scale deployment my-apache --replicas 3
+
+deployment uopdated to 2/3 repluca
+ReplicasSet sets pod count=2/3
+Control Plane assigns node (which node pod will run) to a pod
+kubelet agent sees pod is needed, starts containers
+
+####### logs
+microk8s.kubectl logs deployment/my-apache --follow --tail 1
+microk8s.kubectl logs -l run=my-apache
+
+For logging study Stern tool
+
+######## describe command
+ microk8s.kubectl describe pod/my-apache-5d589d69c7-4m62q
+ 
+ ######## watch param to kubectl get pods -w
+ ### now if we delete a pod, the kubernetes watch will show us the update
+ #### if multiple pods are running, then kubernets will create another pod to replace deleted pod
+  
+  %%%%%%% delete a pod$$$$$$$4444
+  microk8s.kubectl delete pod my-apache-5d589d69c7-tt9tb --now
+  
+  delete deplioyemnt
+  kubectl delete deployment my-apache
+  
+  #########scale####
+   microk8s.kubectl scale deployment httpenv --replicas 3
+   
+   #####port expose%%%%%-->
+   microk8s.kubectl expose deployment httpenv --port 8888
+  
+  ########33 kubectl expose creates a service for exposing ports
+  Now we can connnect to the service on 8888
+  below clusterIP we get buy running kubectl get services
+  curl 10.152.183.72:8888
+  
+  ### a shell pod to access dns
+  kubectl run --generator run-pod/v1 tmp-shell --rm -it --image bretfisher/netshoot -- bash
+  A service is stable address for pods
+  if we want to connec to a pod, we need a servuce
+  CoreDNS allows us to resolve services by  name
+  there are different services 
+  ClusterIP
+  NodePort (node port will reate clusterIp)
+  LoadBalancer
+  ExternalName
+  
+  ClusterIP (default)
+
+  1) kube API server is on master what makes a node master
+  2) Worker node has kubelet running
+  3) Schedular decies on which pods goes on which node.
+  4) etcd (key vaue db) controller() and schedule also on master)
+  
+  
+  
+  
+  
+  
+  ########## run a pod with bash ######
+   microk8s.kubectl run --generator run-pod/v1 tmp-she1 --rm -it --image bretfisher/netshoot -- bash
+   
+   
+  ###### docker stack deploy equivalent == kubectl apply#########
+  kubectl apply -f filename.yml
+  
+  kubectl api-resources
+
+  kubectl api-versions
+  
+  ## parameter inside kind services and spec
+  kubectl explain services.spec
+  
+  kubectl explain deployment.spec.template.spec.volumes.nfs.server
+  
+  kubectl apply -f file.yaml --dry-run
+  kubectl apply -f file.yaml --server-dry-run
+  kubectl diff -f file.yaml
+  
+  metadata can be used for filtering, we can create any keyvalue pair
+  kubectl get pods -l app=nginx
+  kubectl apply -f file.yaml -l app-nginx
+  
+  #############selector#########
+  selectors to identify pods
+  
+  kubectl delete resourcce-type/recoursea-name
+  
+  
+  volumes: shared by all container od a pod
+  Persistsent Volume: created at cluster Level, multiple pods can share them
+  
+  CSI: Container storages Plugin : new way to connect to storage
+  
+  CRD and operator pattern
+  
+  #########GUI for Kubernests######
+  kubernests Dashboard or lens for k8s
+  
+  ########context@@@@
+  kubectl context
+  authenitcation inside '~/.kube/config' file
+  
+  
+  ############k8s architectures: Network=> {Master and Nodes}###########
+  
+#N#  Master/Masters (Masters called Control Plane): # APIServer(talks to kubelet), schedular (decides which pod goes to which node), controller,etcd,CoreDNS(optional) #
+#E# 
+#T#  Node1: 
+#W#     #  [kubelet+kube-proxy] [container1+container2......]   #
+#O#     #                Container Runtime						#
+#R#	    #				Operating system						#	
+#K#	    #				hardware								#
+  
+APIServer talks to kubelet
+kubelet gives order to kube-proxy--> kube proxy assgined ip to containers
+
+We have internal load balancer and external loadbalancer
+
+######POD pod#################
+Every pod has IP and all the container inside do not have individula IP
+Containers in a pod share localhost and share volumes
+docker doesn't know pod, but Kbs is telling docker about containers
+
+######Installation microk8s####
+sudo yum install -y snapd
+#we might need to run snapd daemon
+
+sudo snap install microk8s --classic
+sudo snap install microk8s --classic --channel=1.17/stable (recommended)
+
+sudo usermod -aG microk8s <username>
+
+echo "alias kubectl='microk8s.kubectl'" >> ~/.bashrc
+
+optional command to enable coreDNS:> microk8s.enable dns
+check status: microk8s.status
+###############################
+
+##########SHPOD#############
+shpod: gives us shell running in a pod on cluster
+kubectl apply -f https://k8smastery.com/shpod.yaml
+
+kubectl attach --namespace=shpod -it shpod
+
+kubectl delete -f https://k8smastery.com/shpod.yaml
+
+shpod will run inside shpod namespace which affects DNS also
+so to ping one dns we need to do ping mypod.default or ping mypod.<namespace>
+
+#############################################
+#########kubectl#############
+kubectl get <TYPE> (kubectl get nodes|services)
+## get node info in json
+kubectl get nodes -o json | jq ".items[] | {name:.metadata.name} + .status.capacity"
+
+kubectl get nodes -o json 
+kubectl get nodes -o wide
+kubectl get nodes -o yaml
+
+##########Describe command#######
+
+kubectl describe node/<node name>
+kubectl describe resource-type resource-name
+
+kubectl describe node node1 (node1 ke pods bhi dikh jaayeneg)
+##### api-resources####
+kubectl api-resources
+
+#####explains ######
+kubectl explain node
+or kubectl explain node.spec (element by element)
+
+kubectl explain node --recursive
+
+
+###### kubectl get###########
+kubectl get services
+kubectl get svc (services)
+
+kubectl get pods
+
+######namespaces##########
+kubectl get namespaces|ns
+
+kubectl get pods --all-namespaces
+kubectl get pods -A
+
+kubectl get pods -n kube-system (to get pods from kube-system namespaces)
+
+###########configMap objects in kube-public namespaces##########
+cponfigMap contains clusterinfo
+
+kubectl -n kube-public get configMaps
+kubectl -n kube-public get configMaps cluster-info -o yaml
+/api/v1/namespaces/kube-public/configmaps/cluster-info
+
+kubectl get configMaps coredns -o yaml -n kube-system
+/api/v1/namespaces/kube-system/configmaps/coredns
+#############################
+
+ATIN: App layer: http/ftp
+Transport: TCP/IP | UDP + data
+Internet: Ip header (soruce and dest IP) + TCP/IP or UDP+ data
+Network: Ethernet Header+IP Header + TCP/IP or UDP  + data + trailer
+
+#######TCP vs UDP######
+ackowelgedment received
+retransmitting any unacknowledged data
+
+UDP: packet may be lost
+unreliable but fast
+datagrams sent as packets
+
+Loopback interface: computer interacts to itself
+
+####kubectl abstraction##############
+Deployment(resources)
+ReplicaSet (___11____) (earlier called replication controller)
+Pod (___11___)
+
+############Creatng pods#########
+kubectl run pingpong --image alipine ping 8.8.8.8
+
+####### create deployment#########
+kubectl create deployment nginx --image nginx
+########scale deployment#########
+kubectl scale deployment pingpong --replicas 3
+kubectl create deployment nginx --image nginx
+ kubectl scale deployment.apps/pingpong --replicas 4  
